@@ -1,7 +1,7 @@
 const http = require('http');
 
-const hostname = 'http://react-app-11.herokuapp.com/';
-const port = 3000;
+//const hostname = 'http://react-app-11.herokuapp.com/';
+const port = (process.env.PORT || 8081);
 
 // code for local host
 /**
@@ -14,6 +14,6 @@ const server = http.createServer((req, res) => {
   res.end('Hello World\n');
 });
 
-server.listen(port, hostname, () => {
+server.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
