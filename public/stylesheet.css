@@ -1,0 +1,22 @@
+.outerBlock {
+	//background: url("https://i.ytimg.com/vi/80rDnuGItJs/maxresdefault.jpg");
+
+}
+
+.label {
+	
+
+ 
+	color : cyan;
+
+}
+.formComponent{
+
+border-style: double;
+}
+.formBlock {
+	
+	border-style: double;
+	width: 20%;
+
+}

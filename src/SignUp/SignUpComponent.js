@@ -21,7 +21,7 @@ export default class SignUpComponent extends Component {
 
 		constructor(props) {
          super(props);
-         this.state ={name : '' , Mobile :'' , email :'' , address : '' , pin : '', state1 : 'Panjab' , isChecked : false , male : false, dataList : '', isShowlist :false, };
+         this.state ={name : '' , Mobile :'' , email :'' , address : '' , pin : '', state1 : 'Panjab' , isChecked : false , male : false, dataList : '', isShowlist :false, password : '' };
        }
         componentDidMount() {
         	fetch('https://node-app-11.herokuapp.com/getData',{ 
@@ -52,17 +52,13 @@ export default class SignUpComponent extends Component {
     		
 	    }
 
-
-
-
-
 	inputTextElement = (LabelName, stateval ) => {
 		let val = this.state[stateval];
 		console.log(stateval)
 		return(
-	 		<label>
+	 		<label className = "label" >
          		 {LabelName}:
-         		 <input type="text" value={val}  onChange={(e) => this.handleChange(e, stateval, 'input')} />
+         		 <input type="text"  value={val}  onChange={(e) => this.handleChange(e, stateval, 'input')} />
      		</label> 
 		);
  
@@ -103,6 +99,7 @@ export default class SignUpComponent extends Component {
  			var data =  {
  						 name : this.state.name,
  			 			 mobilenumber : this.state.Mobile, 
+ 			 			 password : this.state.password,
  			 			 state : this.state.state1,
  			 			 email : this.state.email, 
  			 			 address : this.state.address,
@@ -184,27 +181,27 @@ export default class SignUpComponent extends Component {
 	render() {
 		console.log(this.state.isShowlist);
 		return(
-	<center id = 'pad'>
-		<div>
+	
+		<div className = "outerBlock">
 
-
+			<center>
 			<img src ='https://www.jcount.com/wp-content/uploads/2015/04/appirio.png' />
-			<h1>  Buddy, Appirio Welcomes you !!!</h1>
+			<h1 style = {{color : 'cyan'}}>  Buddy, Appirio Welcomes you !!!</h1>
+			</center>
 			<div >
-			 <fieldset>
-                <legend>Candidate Form</legend>
+			 <fieldset className = 'formBlock'>
+                	
 
-				<form  style = {{background: 'blue' }} id = 'border' >
+				<block className = 'formComponent'>
 					{this.inputTextElement('First Name','name')} <br/><br/>
 					{this.inputTextElement('Mobile No','Mobile')} <br/><br/>
 					{this.inputTextElement('Email','email')} <br/><br/>
+					{this.inputTextElement('Password','password')} <br/><br/>		
 					{this.inputTextElement('Address','address')} <br/><br/>
 					{this.inputTextElement('PIN','pin')} <br/><br/>
 					{/*{this.pickListElement} <br/><br/>
 					{this.ckeckBoxElement('Fresher','isChecked')} <br/><br/>*/}
 					{ /* {this.ckeckBoxElement('Male' , 'male' )} <br/><br/>  */}
-
-					
 					{ /*{ButtonElement('Sign Up')}	*/}
 					<button type = "button" onClick = {this.handleSubmil}>Sign Up</button>
 
@@ -212,17 +209,15 @@ export default class SignUpComponent extends Component {
 					<br/> <br/>
 					<button type = "button" onClick = {this.getList}>Show Data List</button>
 
-					
-
-				</form>
+				</block>
 		
-		{this.state.isShowlist && <ShowList data={this.state.dataList}/>}
+		          {this.state.isShowlist && <ShowList data={this.state.dataList}/>}
 			  </fieldset>
 	
 			</div>
 		</div>
 
-	</center>
+	
 
 			)
 	}
